@@ -41,7 +41,8 @@ fun main() {
 //    println(map.getValue("abc"))
 
     val person = Person("ola")
+    println(person.nickName)
+    person.printInfo()
+    println(person.nickName)
 
-    person.nickName = "Ava"
-    println(person)
 }
