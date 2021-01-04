@@ -28,9 +28,21 @@ class BasicInfoProvider : PersonInfoProvider, SessionInfoProvider {
 }
 
 
+fun checkTypes(infoProvider: PersonInfoProvider) {
+    if (infoProvider is SessionInfoProvider) {
+        println("is SessionInfoProvider")
+        infoProvider.getSessionIdik()
+    } else if (infoProvider is PersonInfoProvider) {
+        println("is PersonInfoProvider")
+    }
+}
+
+
+
+
 fun main() {
     val Koral = Person("Koral")
     val provider = BasicInfoProvider()
     provider.printInfo(Koral)
-    provider.getSessionIdik()
+    checkTypes(provider)
 }
