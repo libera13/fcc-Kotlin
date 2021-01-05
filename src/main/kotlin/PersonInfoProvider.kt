@@ -9,7 +9,7 @@ interface SessionInfoProvider {
     fun getSessionIdik()
 }
 
-open class BasicInfoProvider(val city: String) : PersonInfoProvider, SessionInfoProvider {
+open class BasicInfoProvider() : PersonInfoProvider, SessionInfoProvider {
     override val providerInfo: String
         get() = "basic info"
 
@@ -22,9 +22,6 @@ open class BasicInfoProvider(val city: String) : PersonInfoProvider, SessionInfo
 
     override fun getSessionIdik() {
         println(sessionId)
-    }
-    fun printMyCity() {
-        println(city)
     }
 }
 
@@ -43,9 +40,13 @@ fun checkTypes(infoProvider: PersonInfoProvider) {
 
 fun main() {
     val Koral = Person("Koral")
-    val provider = BasicInfoProvider("Warszawa Basic")
+//    val provider = BasicInfoProvider()
+    val provider = object : PersonInfoProvider {
+        override val providerInfo: String
+            get() = TODO("Not yet implemented")
+    }
+
     provider.printInfo(Koral)
-    provider.printMyCity()
     checkTypes(provider)
 
     println("--------------")
